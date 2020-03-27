@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axiosWithAuth  from '../utils/axiosWithAuth';
 
 
 const initialColor = {
@@ -18,6 +19,12 @@ const ColorList = ({ colors, updateColors }) => {
 
   const saveEdit = e => {
     e.preventDefault();
+    // const {id} = colorToEdit.id
+    axiosWithAuth()
+    .put(`/api/colors/${colorToEdit.id}`,colorToEdit)
+    .then((res) => {
+      console.log('res for put',res)
+    })
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
