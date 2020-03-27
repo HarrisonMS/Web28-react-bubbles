@@ -26,12 +26,9 @@ export const Login = () => {
   axiosWithAuth()
     .post(endpoint, creds)
     .then(response => {
-      console.log('res in login post',response)
       const token = JSON.stringify(response.data.payload);
-      console.log('token stringified',token)
       localStorage.setItem('token', token);
       history.push('/bubbles');
-      console.log('history',history)
     })
     .catch(error => console.log('can not seem to login buddy', error));
       setCreds({

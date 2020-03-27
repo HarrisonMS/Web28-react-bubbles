@@ -7,11 +7,10 @@ const initialColor = {
 };
 
 const ColorList = ({ colors, updateColors }) => {
-  console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
   const [ addColor, setAddColor ] = useState(initialColor)
-
+console.log(addColor)
   const editColor = color => {
     setEditing(true);
     setColorToEdit(color);
@@ -22,7 +21,6 @@ const ColorList = ({ colors, updateColors }) => {
     axiosWithAuth()
     .put(`/api/colors/${colorToEdit.id}`,colorToEdit)
     .then((res) => {
-      console.log('res for put',res)
       updateColors([...colors.filter((color) => color.id !== colorToEdit), res.data])
       setEditing(!editing)
       axiosWithAuth().get('/api/colors')
@@ -39,17 +37,18 @@ const ColorList = ({ colors, updateColors }) => {
   };
   
   const postColor = (e) => {
-    // e.preventDefault();
+    e.preventDefault()
     axiosWithAuth()
     .post('./api/colors', addColor)
     .then((res) => {
-      console.log(res)
-      axiosWithAuth().get('/api/colors')
+      axiosWithAuth()
+      .get('/api/colors')
       .then((res) => updateColors(res.data))
     })
     .catch((err) => console.log(err));
-
+    setAddColor(initialColor)
   }
+
   const handleChanges = e => {
     setAddColor({
       ...addColor,
@@ -62,14 +61,14 @@ const ColorList = ({ colors, updateColors }) => {
       <ul>
         {colors.map(color => (
           <li key={color.color} onClick={() => editColor(color)}>
-            <span>
+            <span style={{ color: color.code.hex }}>
               <span className="delete" onClick={e => {
                     e.stopPropagation();
                     deleteColor(color)
                   }
                 }>
                   x
-              </span>{" "}
+              </span >{" "}
               {color.color}
             </span>
             <div
@@ -125,8 +124,6 @@ const ColorList = ({ colors, updateColors }) => {
           </div>
         </form>
       )}
-      <div className="spacer" />
-
     </div>
   );
 };
