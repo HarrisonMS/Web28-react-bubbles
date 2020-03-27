@@ -28,7 +28,6 @@ const ColorList = ({ colors, updateColors }) => {
       console.log('res for put',res)
       updateColors([...colors.filter((color) => color.id !== colorToEdit), res.data])
       setEditing(!editing)
-      // history.push('/bubbles')
       
     })
     // Make a put request to save your updated color
