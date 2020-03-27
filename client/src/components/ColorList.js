@@ -39,7 +39,7 @@ const ColorList = ({ colors, updateColors }) => {
   };
   
   const postColor = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     axiosWithAuth()
     .post('./api/colors', addColor)
     .then((res) => {
