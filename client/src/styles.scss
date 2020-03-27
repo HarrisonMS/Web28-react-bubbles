@@ -8,43 +8,57 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: rgb(43, 40, 40);
 }
+// *{
+//   border: 1px solid red;
+// }
 
 .App {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Spirax', cursive;
   text-align: center;
   display: flex;
+  background-color: rgb(43, 40, 40);
 
   svg {
     height: 100%;
   }
 }
 
-.spacer {
-  height: 100%;
-}
+// .spacer {
+//   height: 100%;
+// }
 
 .bubble-wrap {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
+.bubble-wrap p {
+  color: white;
+  font-size: xx-large;
+}
 
 .colors-wrap {
-  height: 100%;
+  font-family: 'Happy Monkey', cursive;
+  font-size: large;
+  color: white;
+  height: auto;
   width: 300px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-
+ 
   ul {
     list-style: none;
     text-align: start;
 
     li {
+      
       cursor: pointer;
       padding: 6px 0;
       display: flex;
       justify-content: space-between;
       width: 100%;
+      color: white;
     }
   }
 }
