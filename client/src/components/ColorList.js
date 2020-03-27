@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axiosWithAuth  from '../utils/axiosWithAuth';
+// import { useHistory } from 'react-router-dom';
 
 
 const initialColor = {
@@ -8,6 +9,7 @@ const initialColor = {
 };
 
 const ColorList = ({ colors, updateColors }) => {
+  // const history = useHistory();
   console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
@@ -24,6 +26,10 @@ const ColorList = ({ colors, updateColors }) => {
     .put(`/api/colors/${colorToEdit.id}`,colorToEdit)
     .then((res) => {
       console.log('res for put',res)
+      updateColors([...colors.filter((color) => color.id !== colorToEdit), res.data])
+      setEditing(!editing)
+      // history.push('/bubbles')
+      
     })
     // Make a put request to save your updated color
     // think about where will you get the id from...
