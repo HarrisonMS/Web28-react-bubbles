@@ -9,7 +9,12 @@ const initialColor = {
 const ColorList = ({ colors, updateColors }) => {
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
-  const [ addColor, setAddColor ] = useState(initialColor)
+  const [ addColor, setAddColor ] = useState({
+    color: '',
+    code : {
+      hex: ''
+    }
+  });
 console.log(addColor)
   const editColor = color => {
     setEditing(true);
@@ -23,7 +28,8 @@ console.log(addColor)
     .then((res) => {
       updateColors([...colors.filter((color) => color.id !== colorToEdit), res.data])
       setEditing(!editing)
-      axiosWithAuth().get('/api/colors')
+      axiosWithAuth()
+      .get('/api/colors')
       .then((res) => updateColors(res.data))
     })
     .catch((err) => console.log(err));
@@ -89,7 +95,7 @@ console.log(addColor)
 					type='text'
 					name='code'
 					value={addColor.code.hex}
-					onChange={(e) => setAddColor({ ...colorToEdit, code: { hex: e.target.value } })}
+					onChange={handleChanges} 
 					placeholder='Hex Code'
 				/>
 				<button>Add Color</button>
