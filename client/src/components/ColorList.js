@@ -92,7 +92,8 @@ const ColorList = ({ colors, updateColors }) => {
           </li>
         ))}
       </ul>
-      <form onSubmit={postColor}>
+      <form className="formWrapper" onSubmit={postColor}>
+        <h4>Add your own Color</h4>
         <input
           type="text"
           name="color"

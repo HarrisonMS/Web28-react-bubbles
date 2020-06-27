@@ -40,6 +40,9 @@ body,
 }
 
 .colors-wrap {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
   font-family: 'Happy Monkey', cursive;
   font-size: large;
   color: white;
@@ -109,5 +112,29 @@ form {
     color: white;
     padding: 3px 8px;
     margin-top: 16px;
+  }
+}
+.formWrapper {
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 200px;
+  width: 80%;
+  box-shadow: 0 3px 6px rgba(177, 205, 10, 0.16), 0 3px 6px rgba(177, 205, 10, 0.16);
+
+  h4 {
+    color:whitesmoke;
+    width: 80%;
+    box-shadow: 0 3px 6px rgba(163, 206, 8, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+ 
+  
+  }
+
+  input {
+    line-height: 1.75;
+    border: 1px solid red;
+
   }
 }
