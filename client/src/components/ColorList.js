@@ -26,15 +26,16 @@ const ColorList = ({ colors, updateColors }) => {
     axiosWithAuth()
       .put(`/api/colors/${colorToEdit.id}`, colorToEdit)
       .then((res) => {
+        console.log(res.data)
         updateColors([
-          ...colors.filter((color) => color.id !== colorToEdit),
+          ...colors.filter((color) => color.id !== colorToEdit.id),
           res.data,
         ]);
         setEditing(!editing);
         axiosWithAuth()
           .get("/api/colors")
           .then((res) => updateColors(res.data));
-        debugger;
+    
       })
       .catch((err) => console.log(err));
   };
@@ -43,7 +44,8 @@ const ColorList = ({ colors, updateColors }) => {
     axiosWithAuth()
       .delete(`/api/colors/${color.id}`)
       .then((res) =>
-        updateColors(colors.filter((color) => color.id !== res.data))
+      
+        updateColors(colors.filter((item) => item.id !== color.id))
       )
       .catch((err) => console.log(err));
   };

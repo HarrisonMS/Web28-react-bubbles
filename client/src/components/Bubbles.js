@@ -17,6 +17,7 @@ const Bubbles = ({ colors }) => {
       <p>bubbles</p>
       <Svg width={400} height={400}>
         <Pack
+        data-testid='bubbles'
           data={{
             children: bubbleData
           }}
